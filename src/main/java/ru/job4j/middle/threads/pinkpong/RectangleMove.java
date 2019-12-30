@@ -10,6 +10,7 @@ public class RectangleMove implements Runnable {
         this.rect = rect;
     }
 
+
     @Override
     public void run() {
         while (true) {
