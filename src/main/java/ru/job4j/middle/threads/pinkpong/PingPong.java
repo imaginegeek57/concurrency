@@ -19,7 +19,6 @@ public class PingPong extends Application {
 
         new Thread(new RectangleMove(rect), "first").start();
         new Thread(new RectangleMove(rect), "second").start();
-        new Thread(new RectangleMove(rect), "third").start();
 
         stage.setScene(new Scene(group, limitX, limitY));
         stage.setTitle(JOB4J);
