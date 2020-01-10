@@ -13,6 +13,7 @@ public class FileDownload {
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
                 Thread.sleep(1000);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
