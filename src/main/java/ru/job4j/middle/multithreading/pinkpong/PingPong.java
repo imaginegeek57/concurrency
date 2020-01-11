@@ -1,4 +1,4 @@
-package ru.job4j.middle.threads.pinkpong;
+package ru.job4j.middle.multithreading.pinkpong;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -27,10 +27,10 @@ public class PingPong extends Application {
                 event -> {
                     while (!Thread.currentThread().isInterrupted()) {
                         try {
-                            Thread.sleep(30);
+                            Thread.sleep(150);
                         } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
                             System.out.println("Thread interrupted");
+                            Thread.currentThread().interrupt();
                         }
                     }
                 });

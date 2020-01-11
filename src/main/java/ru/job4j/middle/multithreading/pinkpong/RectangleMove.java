@@ -1,4 +1,4 @@
-package ru.job4j.middle.threads.pinkpong;
+package ru.job4j.middle.multithreading.pinkpong;
 
 import javafx.scene.shape.Rectangle;
 
@@ -13,13 +13,14 @@ public class RectangleMove implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
+        while (true) {
             this.rect.setX(this.rect.getX() + 1);
-            this.rect.setY(this.rect.getX() - 0.2);
+            this.rect.setY(this.rect.getX() + 0.1);
+
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                e.printStackTrace();
             }
         }
     }
