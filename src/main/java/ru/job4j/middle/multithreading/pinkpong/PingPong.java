@@ -24,15 +24,6 @@ public class PingPong extends Application {
         stage.setResizable(false);
         stage.show();
         stage.setOnCloseRequest(
-                event -> {
-                    while (!Thread.currentThread().isInterrupted()) {
-                        try {
-                            Thread.sleep(150);
-                        } catch (InterruptedException e) {
-                            System.out.println("Thread interrupted");
-                            Thread.currentThread().interrupt();
-                        }
-                    }
-                });
+                event -> Thread.interrupted());
     }
 }
