@@ -24,11 +24,14 @@ public class FileDownload {
                  FileOutputStream fileOutputStream = new FileOutputStream("pom_tmp.xml")) {
                 byte dataBuffer[] = new byte[1024];
                 int bytesRead;
+                long begin = System.nanoTime();
                 while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                     fileOutputStream.write(dataBuffer, 0, bytesRead);
-                    System.out.println("cycle");
                     try {
-                        Thread.sleep(1000);
+                        long end = System.nanoTime();
+                        long finish = end - begin;
+                        System.out.println(finish);
+                        Thread.sleep(finish);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
