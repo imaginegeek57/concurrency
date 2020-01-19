@@ -1,6 +1,8 @@
-package ru.job4j.middle.multithreading.synchronize;
+package ru.job4j.middle.multithreading.synchronize.task1;
 
 import org.junit.Test;
+import ru.job4j.middle.multithreading.synchronize.task1.Count;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
