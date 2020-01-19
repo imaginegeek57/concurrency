@@ -1,30 +1,38 @@
 package ru.job4j.middle.multithreading.synchronize.task2;
 
+import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @ThreadSafe
-public class UserStorage {
+public class UserStorage implements Runnable {
 
+    private String name;
+
+    @GuardedBy("this")
     public List <User> userList = new LinkedList <>();
 
-    public void add(User user) {
+    public UserStorage(String name) {
+        this.name = name;
+    }
+
+    public synchronized void add(User user) {
         if (!userList.contains(user))
             userList.add(user);
     }
 
-    public void update(int id, int a) {
+    public synchronized void update(int id, int a) {
         userList.set(id, new User(id, a));
     }
 
 
-    public void delete(User user) {
+    public synchronized void delete(User user) {
         userList.remove(user);
     }
 
-    public void transfer(int fromId, int toId, int amount) {
+    public synchronized void transfer(int fromId, int toId, int amount) {
         User userFrom = userList.get(fromId);
         User userTo = userList.get(toId);
 
@@ -36,4 +44,8 @@ public class UserStorage {
         userList.set(toId, userTo);
     }
 
+    @Override
+    public void run() {
+
+    }
 }
