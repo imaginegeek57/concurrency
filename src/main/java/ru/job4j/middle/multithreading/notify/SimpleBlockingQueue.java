@@ -8,7 +8,7 @@ import java.util.Queue;
 @ThreadSafe
 public class SimpleBlockingQueue<T> {
 
-    boolean value = false;
+    private boolean value = false;
 
     @GuardedBy("this")
     private Queue <T> queue = new LinkedList <>();
