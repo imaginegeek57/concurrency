@@ -11,8 +11,8 @@ public class SimpleBlockingQueue<T> {
     private boolean value = false;
 
     @GuardedBy("this")
-    private Queue <T> queue = new LinkedList <>();
-    private Object T;
+    protected Queue <T> queue = new LinkedList <>();
+    protected Object T;
 
     public synchronized void offer(T t) {
         while (value)
@@ -38,5 +38,9 @@ public class SimpleBlockingQueue<T> {
         value = false;
         notify();
         return (T) T;
+    }
+
+    public boolean isEmpty() {
+        return true;
     }
 }
