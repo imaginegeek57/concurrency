@@ -4,9 +4,9 @@ package ru.job4j.middle.multithreading.notify;
 public class Consumer implements Runnable {
 
     private String name;
-    private SimpleBlockingQueue sq;
+    private SimpleBlockingQueue<Integer> sq;
 
-    public Consumer(SimpleBlockingQueue sq, String name) {
+    public Consumer(SimpleBlockingQueue<Integer> sq, String name) {
         this.sq = sq;
         this.name = name;
     }

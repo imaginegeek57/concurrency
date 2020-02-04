@@ -6,7 +6,7 @@ public class QueueTest {
 
     @Test
     public void test() throws InterruptedException {
-        SimpleBlockingQueue sq = new SimpleBlockingQueue();
+        SimpleBlockingQueue <Integer> sq = new SimpleBlockingQueue <>();
         Thread first = new Thread(new Producer(sq, "first"));
         Thread second = new Thread(new Consumer(sq, "second"));
         first.start();
