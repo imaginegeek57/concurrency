@@ -16,32 +16,31 @@ public class UserServlet extends HttpServlet {
     private final ValidateService logic = validateService.getInstace();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter writer = new PrintWriter(resp.getOutputStream());
-        writer.append("users");
-        writer.flush();
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        res.setContentType("text/html;charset=UTF-8");
+
 
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
+
         int id = 0;
+
         try {
             String action = req.getParameter("action");
             System.out.println(action);
 
             switch (action) {
-                case "add":
-                    logic.add(user);
+                case "add": logic.add(user);
                     break;
-                case "update":
-                    logic.update(id, user);
+                case "update": logic.update(id, user);
                     break;
-                case "delete":
-                    logic.delete(user);
+                case "delete": logic.delete(user);
                     break;
                 default:
                     throw new Exception();

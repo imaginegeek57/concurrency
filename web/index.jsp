@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-   <head>
-    <title>User page</title>
-   </head>
-   <body>
-     <h1>Hello user!</h1>
-   </body>
+<head>
+    <title>Base page</title>
+</head>
+<body>
+<h1>Hello World!</h1>
+</body>
 </html>
