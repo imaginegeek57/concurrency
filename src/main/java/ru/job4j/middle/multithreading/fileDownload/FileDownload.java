@@ -7,7 +7,6 @@ import java.net.URL;
 
 public class FileDownload {
 
-
     public static void main(String[] args) {
         new Thread(new MyThread(), "th1").start();
         new Thread(new MyThread(), "th2").start();
