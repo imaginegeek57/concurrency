@@ -29,6 +29,7 @@ public class ConsoleProgress {
                     e.printStackTrace();
                 }
             }
+            Thread.interrupted();
         }
     }
 }

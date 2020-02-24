@@ -3,9 +3,9 @@ package ru.job4j.middle.multithreading.notify;
 public class Producer implements Runnable {
 
     private String name;
-    private SimpleBlockingQueue<Integer> sq;
+    private SimpleBlockingQueue <Integer> sq;
 
-    public Producer(SimpleBlockingQueue<Integer> sq, String name) {
+    public Producer(SimpleBlockingQueue <Integer> sq, String name) {
         this.sq = sq;
         this.name = name;
     }
@@ -13,9 +13,11 @@ public class Producer implements Runnable {
     @Override
     public void run() {
         int i = 0;
-
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             sq.offer(i++);
-        }
+       }
+        Thread.currentThread().interrupt();
+
     }
+
 }
