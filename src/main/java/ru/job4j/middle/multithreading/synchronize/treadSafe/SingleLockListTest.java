@@ -8,6 +8,7 @@ import java.util.TreeSet;
 
 public class SingleLockListTest {
 
+
     @Test
     public void add() throws InterruptedException {
         SingleLockList <Integer> list = new SingleLockList <>();
@@ -19,7 +20,6 @@ public class SingleLockListTest {
         second.join();
         Set <Integer> rsl = new TreeSet <>();
         list.iterator().forEachRemaining(rsl::add);
-        System.out.println(first);
-        System.out.println(second);
+
     }
 }

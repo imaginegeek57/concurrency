@@ -31,6 +31,7 @@ public class DynamicList<E> implements Iterable<E>{
         return result.data;
     }
 
+
     /**
      * Метод получения размера коллекции.
      */
