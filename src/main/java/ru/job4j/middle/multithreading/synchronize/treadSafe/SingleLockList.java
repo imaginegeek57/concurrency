@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @ThreadSafe
-public class SingleLockList<E> implements Iterable <E>, Runnable {
+public class SingleLockList<E> implements Iterable <E> {
 
     @GuardedBy("this")
     private DynamicList dynamicList = new DynamicList();
@@ -31,14 +31,8 @@ public class SingleLockList<E> implements Iterable <E>, Runnable {
         return dynamicList;
     }
 
-
     @Override
     public synchronized Iterator <E> iterator() {
         return copy(this.dynamicList).iterator();
-    }
-
-    @Override
-    public void run() {
-
     }
 }

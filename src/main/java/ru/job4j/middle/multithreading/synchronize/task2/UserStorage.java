@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @ThreadSafe
-public class UserStorage implements Runnable {
+public class UserStorage extends Thread {
 
     private String name;
 
@@ -42,10 +42,5 @@ public class UserStorage implements Runnable {
         userTo.setAmount(valueTo += amount);
         userList.set(fromId, userFrom);
         userList.set(toId, userTo);
-    }
-
-    @Override
-    public void run() {
-
     }
 }

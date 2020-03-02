@@ -38,6 +38,7 @@ public class DynamicList<E> implements Iterable<E>{
     public int getSize() {
         return this.size;
     }
+
     /**
      * Класс предназначен для хранения данных.
      */
