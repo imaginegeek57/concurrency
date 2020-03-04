@@ -3,6 +3,7 @@ package ru.job4j.middle.multithreading.notify;
 
 public class ParallelSearch {
 
+
     public static void main(String[] args) {
         SimpleBlockingQueue <Integer> queue = new SimpleBlockingQueue <>();
         final Thread consumer = new Thread(

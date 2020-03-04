@@ -2,6 +2,7 @@ package ru.job4j.middle.multithreading.notify;
 
 public class Producer implements Runnable {
 
+
     private String name;
     private SimpleBlockingQueue <Integer> sq;
 

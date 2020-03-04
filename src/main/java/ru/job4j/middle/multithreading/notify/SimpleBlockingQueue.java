@@ -9,6 +9,7 @@ import java.util.Queue;
 @ThreadSafe
 public class SimpleBlockingQueue<T> {
 
+
     @GuardedBy("this")
     protected Queue <T> queue = new LinkedList <>();
 
