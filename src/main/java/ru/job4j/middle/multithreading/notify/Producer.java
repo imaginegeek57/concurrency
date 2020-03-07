@@ -14,11 +14,6 @@ public class Producer implements Runnable {
     @Override
     public void run() {
         int i = 0;
-        while (!Thread.currentThread().isInterrupted()) {
             sq.offer(i++);
        }
-        Thread.currentThread().interrupt();
-
-    }
-
 }

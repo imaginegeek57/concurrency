@@ -3,20 +3,16 @@ package ru.job4j.middle.multithreading.notify;
 
 public class ParallelSearch {
 
-
     public static void main(String[] args) {
-        SimpleBlockingQueue <Integer> queue = new SimpleBlockingQueue <>();
+        SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<Integer>();
         final Thread consumer = new Thread(
                 () -> {
                     while (!Thread.currentThread().isInterrupted()) {
                         try {
-                            synchronized (queue) {
-                                queue.wait(1000);
-                            }
+                            Thread.sleep(1000);
                             System.out.println(queue.poll());
-
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            Thread.currentThread().interrupt();
                         }
                     }
                 }
@@ -32,9 +28,12 @@ public class ParallelSearch {
                             e.printStackTrace();
                         }
                     }
+                    consumer.interrupt();
                 }
         ).start();
     }
 }
+
+
 
 

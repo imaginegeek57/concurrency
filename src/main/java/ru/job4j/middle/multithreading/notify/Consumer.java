@@ -14,11 +14,6 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
-
             sq.poll();
         }
-        Thread.currentThread().interrupt();
-
-    }
 }
