@@ -2,6 +2,7 @@ package ru.job4j.middle.servlets.HttpExample;
 
 import java.util.List;
 
+
 public interface Store {
 
     void add(User user);

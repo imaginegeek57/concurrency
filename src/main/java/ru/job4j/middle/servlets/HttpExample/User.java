@@ -10,6 +10,7 @@ public class User {
     private String email;
     private LocalDate createDate;
 
+
     public User(int id, String name, String login, String email, LocalDate createDate) {
         this.id = id;
         this.name = name;

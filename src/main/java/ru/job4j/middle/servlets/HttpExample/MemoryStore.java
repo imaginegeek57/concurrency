@@ -4,18 +4,16 @@ import java.util.List;
 
 public class MemoryStore implements Store {
 
-    private MemoryStore instance;
-
     private MemoryStore() {
     }
 
-    public MemoryStore getInstance() {
-        if (instance == null) {
-            instance = new MemoryStore();
-        }
-        return instance;
+    public static MemoryStore getInstance() {
+        return Holder.INSTANCE;
     }
 
+    private static final class Holder {
+        private static final MemoryStore INSTANCE = new MemoryStore();
+    }
 
     @Override
     public void add(User user) {
@@ -41,6 +39,4 @@ public class MemoryStore implements Store {
     public User findById(int id) {
         return null;
     }
-
-
 }

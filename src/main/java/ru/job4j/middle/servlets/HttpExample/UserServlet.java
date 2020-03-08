@@ -11,57 +11,45 @@ import java.io.PrintWriter;
 public class UserServlet extends HttpServlet {
 
     private User user;
-    private ValidateService validateService;
-
-    private final ValidateService logic = validateService.getInstace();
+    private ValidateService validateService = ValidateService.getInstance();
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        res.setContentType("text/html;charset=UTF-8");
-
-
-    }
-
-
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = resp.getWriter();
 
-        int id = 0;
-
-        try {
-            String action = req.getParameter("action");
-            System.out.println(action);
-
-            switch (action) {
-                case "add": logic.add(user);
-                    break;
-                case "update": logic.update(id, user);
-                    break;
-                case "delete": logic.delete(user);
-                    break;
-                default:
-                    throw new Exception();
-            }
-
-            writer.println("<html>");
-            writer.println("<head>");
-            writer.println("<title>User page</title>");
-            writer.println("</head>");
-            writer.println("<body>");
-
-            writer.print("<p>" + action + "</p>");
-
-        } catch (Exception e) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
-            e.printStackTrace();
-        } finally {
-            writer.println("</body");
-            writer.println("</html>");
-            writer.close();
+        StringBuilder sb = new StringBuilder("<table>");
+        for (User user : validateService.userList) {
+            sb.append("<tr><td>" + user + "</td><tr>");
         }
+        sb.append("</table>");
 
+        writer.append("<!DOCTYPE html>" +
+                "<html lang=\"en\">" +
+                "<head>" +
+                "<meta charset=\"UTF-8\">" +
+                "<title>User Page</title>" +
+                "</head>" +
+                "<body>" +
+                "<form action='" + req.getContextPath() + "/users' method='post'>" +
+                "Name : <input type=text' name='users'/>" +
+                "<input type='submit'>" +
+                "</form>" +
+                "<br>" +
+                sb.toString() +
+                "</body>" +
+                "</html>"
+        );
+        writer.flush();
+    }
+
+
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
+        String users = req.getParameter("users");
+        PrintWriter writer = resp.getWriter();
+        writer.append("hi "+ users);
+        doGet(req, resp);
     }
 }

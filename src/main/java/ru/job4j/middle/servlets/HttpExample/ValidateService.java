@@ -2,34 +2,24 @@ package ru.job4j.middle.servlets.HttpExample;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ValidateService {
-
-    private MemoryStore MemoreStore;
-
-    private final Store logic = MemoreStore.getInstance();
-
-    /**
-     * Список пользователей
-     */
-    private List <User> userList = new LinkedList <>();
-
-    private ValidateService instace;
 
     private ValidateService() {
     }
 
-    /**
-     * Получение экземпляра класса
-     *
-     * @return
-     */
-    public ValidateService getInstace() {
-        if (instace == null) {
-            instace = new ValidateService();
-        }
-        return instace;
+    public static ValidateService getInstance() {
+        return Holder.INSTANCE;
     }
+
+    private static final class Holder {
+        private static final ValidateService INSTANCE = new ValidateService();
+    }
+
+    private MemoryStore memoryStore = MemoryStore.getInstance();
+
+    public List <User> userList = new CopyOnWriteArrayList <>();
 
     /**
      * Добавление нового пользователя
