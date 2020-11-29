@@ -6,6 +6,7 @@ public class Consumer implements Runnable {
     private String name;
     private SimpleBlockingQueue <Integer> sq;
 
+
     public Consumer(SimpleBlockingQueue <Integer> sq, String name) {
         this.sq = sq;
         this.name = name;
@@ -13,11 +14,6 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
-
             sq.poll();
         }
-        Thread.currentThread().interrupt();
-
-    }
 }
